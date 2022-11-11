@@ -6,17 +6,16 @@
 </template>
 
 <script>
-import TheNavbar from './components/TheNavbar'
-import {mapMutations} from "vuex";
-
+import TheNavbar from "./components/TheNavbar";
+import { mapActions } from "vuex";
 
 export default {
-  components: {TheNavbar},
+  components: { TheNavbar },
   methods: {
-    ...mapMutations(['loadDataDB']),
+    ...mapActions(["loadDataDB"]),
   },
   mounted() {
-    this.loadDataDB()
+    this.loadDataDB();
   },
-}
+};
 </script>

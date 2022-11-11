@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import {mapGetters, mapMutations, mapState} from 'vuex'
+import {mapActions, mapGetters, mapMutations, mapState} from 'vuex'
 
 export default {
   inject: ['changeI18N'],
@@ -39,20 +39,14 @@ export default {
     ...mapGetters(['btnDisabled'])
   },
   methods: {
-    ...mapMutations(['createTsk', "submitTaskDB"]),
+    ...mapMutations(['createTsk']),
+    ...mapActions(["submitTaskDB"]),
     createT() {
       this.$router.push('/tasks')
       this.createTsk()
       this.submitTaskDB()
     },
-    // changeLangen() {
-    //   this.changeI18N('en')
-    //   this.$forceUpdate()
-    // },
-    // changeLangru() {
-    //   this.changeI18N('ru')
-    //   this.$forceUpdate()
-    // },
+
   },
 }
 </script>
