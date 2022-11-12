@@ -44,7 +44,7 @@ export default createStore({
   },
   mutations: {
     createTsk(state) {
-      state.blocksDB = {
+      state.blockDB = {
         title: state.title,
         description: state.description,
         deadline: state.deadline,
@@ -52,7 +52,7 @@ export default createStore({
         colorstatus: state.colorstatus,
         id: Date.now(),
       };
-      state.blocks.push(state.blocksDB);
+      state.blocks.push(state.blockDB);
     },
   },
   actions: {
@@ -66,14 +66,14 @@ export default createStore({
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            firstBlock: context.state.blocksDB,
+            firstBlock: context.state.blockDB,
           }),
         }
       );
       const firebaseData = await response.json();
       // комментарии: добавление ключа базы данных для объекта задачи в объект задачи vuex
       context.state.blocks.find(
-        (b) => b.id === context.state.blocksDB.id
+        (b) => b.id === context.state.blockDB.id
       ).keydb = firebaseData.name;
     },
     async loadDataDB(context) {
